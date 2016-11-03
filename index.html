@@ -1,0 +1,113 @@
+<html>
+ <head>
+    
+    <!-- Website Title & Description for Search Engine purposes -->
+    <title>Movies Infinity</title>
+    <meta name="description" content="a movie site">
+    
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Bootstrap CSS -->
+    <link href="bsc/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    
+    <!-- Include Modernizr in the head, before any other Javascript -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!--  <script src="jquery-3.1.1.min.js"></script> -->
+	<!--<script src ="includes/js/script.js"></script>-->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    
+  </head>
+<body>
+
+	<header>
+	<div class="container">
+
+          <!-- toggle bar activated for smaller screens -->
+          <button class="navbar-toggle" data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand pull-left" id="logo" href="#"><h4>Movies Infinity</h4></a>
+          
+          <div class="nav-collapse collapse navbar-responsive-collapse" >
+
+            <form class="navbar-form pull-left">
+              <input type="text" class="form-control " placeholder="Search this site..." id="searchInput">
+              <button  type="button" class="btn btn-default" id="searchbtn" onclick="movement();" ><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+            <ul class="nav navbar-nav pull-right" id="navigation" >
+              
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li><a href="#">SignIn</a></li>
+            <li><a href="#">Register</a></li>
+
+            </ul><!-- end of ul -->
+          </div><!-- end of navbar-collapse -->
+        </div><!-- end of container -->
+      </div><!-- end of navbar -->
+      </header>
+      <div class="container" id="result">
+			<div class="row" id="poster">
+				
+			</div>
+	 </div>
+<div class="pagination"  id="move" style="visibility: hidden">
+	<li id="prev"><a href="#poster"> prev </a></li>
+	<li id="next"><a href="#poster"> next </a></li>
+</div>
+
+	<script type="text/javascript">
+	var page=1;
+	function movement()
+	{
+	$('#poster  #display').remove();
+	var $title= $('#poster');
+	var $s=$('#searchInput');
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.omdbapi.com/?s='+$s.val() + '&page=' +page,
+		success: function(data){
+			
+			$.each(data.Search,function(i,order){
+				var pic = order.Poster;
+				if(pic=="N/A")
+				{
+					pic="noimg.png";
+				}
+				$title.append('<div class="col-sm-4" id="display"><div class="panel"><div class="panel-heading"><h3>'+order.Title+'</h3></center></div><center><img class="img-responsive" src="'+pic+'" alt="No Poster" height="400" width="300"></center><br><br><center><h3>Year: '+order.Year+'</h3></center></div></div>');	
+				if(page==data.totalResults)	
+					$('#next').disabled();
+			});
+			$("#move").attr("style","visibility:visible");
+		},	
+		error: function(){
+			alert("data not found");
+		}
+	});
+	
+	 }
+	 $('#prev').click(function(){
+	 	page--;
+	 	if(page>0)
+	 	movement();
+	 else
+	 	$('#prev').disabled();
+	 	 });
+	 $('#next').click(function(){
+	 	page++;
+	 	movement();
+	 	 });
+	 </script>
+</body>
+</html>

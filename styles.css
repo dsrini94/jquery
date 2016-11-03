@@ -1,0 +1,146 @@
+/*
+
+My Custom CSS
+=============
+
+Author:  Brad Hussey
+Updated: August 2013
+Notes:	 Hand coded for Udemy.com
+
+*/
+
+
+/* --------------------------------------
+   Layout
+   -------------------------------------- */
+
+
+
+/* --------------------------------------
+   Typography
+   -------------------------------------- */
+
+
+
+/* --------------------------------------
+   Navbar
+   -------------------------------------- */
+    #nav-cont
+   {
+      padding: 0px;
+   }
+
+   #logo h4
+{
+   color: white;
+   width: 230px;
+   height:40px;
+   font-size: 35px;
+   
+}
+#navigation
+{
+   margin-top: 15px;
+   
+   
+}
+#navigation li a
+{
+   
+   font-size: 20px;
+   word-spacing: 10px;
+   color:white ;     
+
+}
+#navigation li :hover
+{
+   color:#17202A;
+}
+#iconuser
+{
+   font-size: 20px;
+   margin-top: 13px;
+}
+
+#searchInput
+{
+   margin-top: 20px;
+   width: 300px;
+   margin-left: 75px;
+}
+#searchbtn
+{
+   margin-top: 20px;
+}
+   
+ /* --------------------------------------
+   Header
+   -------------------------------------- */ 
+   header
+   {
+     background-color: #B03A2E;  
+   }
+   
+/* --------------------------------------
+   Carousel
+   -------------------------------------- */
+
+
+
+/* --------------------------------------
+   Global Styles
+   -------------------------------------- */
+   #result
+   {
+      margin-top: 25px;
+   }
+   h1{
+      color: green;
+      letter-spacing: 10px;
+   }
+
+   h3{
+      margin: 0px 10px;
+   }
+   #upper{
+      background-color: rgba(0,0,0,0.1);
+      padding: 10px;
+      margin-bottom: 20px;
+   }
+
+   label{
+      font-size: 20px;
+   }
+
+      #poster h2,img{
+         text-align: center;
+      }
+
+      .col-sm-4 {
+    height: 600px;
+}
+#move
+{
+   margin-left: 50%;
+}
+
+
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+/* Portrait & landscape phone */
+@media (max-width: 480px) {
+	
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+	
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+	
+}
